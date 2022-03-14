@@ -1,0 +1,67 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-03-14 19:07:34
+ * @LastEditTime: 2022-03-14 19:30:44
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: \lagou\fed-e-task-07-03\前端可视化课程资料\code copy\01-canvas_api\02-canvas-draw-hd.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>canvas 高清绘制</title>
+  <style>
+    canvas {
+      display: block;
+      margin: 10px auto 0;
+      border: 1px solid orange;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas" width="600" height="500">您的浏览器当前不支持 canvas</canvas>
+</body>
+<script>
+  const canvas = document.getElementById('canvas')
+  const ctx = canvas.getContext('2d')
+
+  const getPixelRatio = (context) => {
+    return window.devicePixelRatio || 1
+  }
+
+  /* 
+    01 放大 canvas 
+    02 再在 css 里将宽高设置为原来的大小 
+    03 考虑到内容的缩放，因此也需将 ctx 缩放
+  */
+
+  const ratio = getPixelRatio()
+  const oldWidth = canvas.width
+  const oldHeight = canvas.height
+
+  canvas.width = canvas.width * ratio
+  canvas.height = canvas.height * ratio
+
+  canvas.style.width = oldWidth + 'px'
+  canvas.style.height = oldHeight + 'px'
+
+  ctx.scale(ratio, ratio)
+
+
+  ctx.beginPath()
+  ctx.lineWidth = 20
+  ctx.strokeStyle = 'orange'
+  ctx.moveTo(100, 100)
+  ctx.lineTo(300, 300)
+  ctx.lineTo(500, 200)
+  ctx.stroke()
+  ctx.closePath()
+
+</script>
+
+</html>

@@ -1,0 +1,45 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-03-14 19:07:34
+ * @LastEditTime: 2022-03-14 19:17:41
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: \lagou\fed-e-task-07-03\前端可视化课程资料\code copy\01-canvas_api\01-canvas-draw-line.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>canvas绘制线条</title>
+  <style>
+    canvas {
+      display: block;
+      margin: 10px auto 0;
+      border: 1px solid orange;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas" width="600" height="500">您的浏览器当前不支持 canvas</canvas>
+</body>
+<script>
+  const canvas = document.getElementById('canvas');
+  let ctx = canvas.getContext('2d')
+
+  ctx.beginPath();
+  ctx.lineWidth = 20;
+  ctx.strokeStyle = 'red';
+  ctx.moveTo(100, 50);
+  ctx.lineTo(300, 350);
+  ctx.lineTo(500, 50);
+  ctx.lineTo(100, 50);
+  ctx.stroke()
+  ctx.closePath();
+
+</script>
+
+</html>
