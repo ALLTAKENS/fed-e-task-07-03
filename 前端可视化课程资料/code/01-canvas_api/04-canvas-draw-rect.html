@@ -19,6 +19,7 @@
   <canvas id="canvas" width="600" height="400">您的浏览器不支持 canvas</canvas>
 </body>
 <script>
+  /** @type {HTMLCanvasElement} */
   const canvas = document.getElementById('canvas')
   const ctx = canvas.getContext('2d')
 
@@ -79,7 +80,7 @@
     ctx: ctx
   })
 
-  // 绘制矩形：描述+填充   描边  填充 
+  // 绘制矩形：描边+填充   
   // ctx.beginPath()
   // ctx.lineWidth = 5
   // ctx.strokeStyle = 'orange'
@@ -89,12 +90,14 @@
   // ctx.stroke()
   // ctx.closePath()
 
+  // 描边  
   // ctx.beginPath()
   // ctx.lineWidth = 4
   // ctx.strokeStyle = 'seagreen'
   // ctx.strokeRect(100, 310, 300, 200)
   // ctx.closePath()
 
+  // 填充 
   // ctx.beginPath()
   // ctx.fillStyle = 'skyblue'
   // ctx.fillRect(410, 310, 300, 200)
@@ -104,6 +107,7 @@
   ctx.beginPath()
   for (var i = 1; i < Math.floor(wd * 1.5 / step); i++) {
     const height = Math.random() * 300 + 50
+    // 获取随机十六进制颜色
     ctx.fillStyle = '#' + parseInt(Math.random() * 0xFFFFFF).toString(16)
     ctx.fillRect((i * step), ht * 1.5 - bottomPad - height, 40, height)
   }

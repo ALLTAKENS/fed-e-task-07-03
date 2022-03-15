@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-04-25 14:15:03
+ * @LastEditTime: 2022-03-15 18:52:57
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: \lagou\fed-e-task-07-03\前端可视化课程资料\code\01-canvas_api\01-canvas-draw-line.html
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +27,8 @@
   <canvas id="canvas" width="600" height="500">您的浏览器当前不支持 canvas</canvas>
 </body>
 <script>
+  /** @type {HTMLCanvasElement} */
+
   const canvas = document.getElementById('canvas')
   const ctx = canvas.getContext('2d')
 
@@ -30,6 +40,18 @@
   ctx.lineTo(300, 300)
   ctx.lineTo(500, 200)
   ctx.stroke()
+  ctx.closePath()
+
+  ctx.beginPath();
+  ctx.lineWidth = 1
+  ctx.font = '50px Verdana'
+  // 创建渐变
+  var gradient=ctx.createLinearGradient(0,0,canvas.width,0);
+  gradient.addColorStop("0","magenta");
+  gradient.addColorStop("0.2","blue");
+  gradient.addColorStop("1.0","red");
+  ctx.strokeStyle = gradient
+  ctx.strokeText('我们都是体面人', 200, 200);
   ctx.closePath()
 
 </script>
