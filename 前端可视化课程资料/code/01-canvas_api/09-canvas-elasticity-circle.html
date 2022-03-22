@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-04-25 14:15:03
+ * @LastEditTime: 2022-03-17 18:14:12
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: \lagou\fed-e-task-07-03\前端可视化课程资料\code\01-canvas_api\09-canvas-elasticity-circle.html
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +51,7 @@
     }
 
     init() {
-      this.run()
+      // this.run()
       this.draw()
     }
 
@@ -64,6 +72,7 @@
       }
       this.x += this.xSpeed
       this.y += this.ySpeed
+      this.draw();
     }
   }
 
@@ -72,15 +81,30 @@
     let ball = new Ball(canvas)
     ballArr.push(ball)
   }
-
-  // 动画
-  setInterval(() => {
+  let oldtime;
+  
+  function ballAnimation(timestamp) {
+    if(oldtime) {
+      console.log(timestamp - oldtime)
+    }
+    oldtime = timestamp;
     ctx.clearRect(0, 0, canvas.clientWidth * 1.5, canvas.clientHeight * 1.5)
     for (let i = 0; i < ballArr.length; i++) {
       let ball = ballArr[i]
-      ball.init()
-    }
-  }, 15)
+      ball.run()
+    };
+    
+    requestAnimationFrame(ballAnimation)
+  }
+  const id = requestAnimationFrame(ballAnimation);
+  // 动画
+  // setInterval(() => {
+  //   ctx.clearRect(0, 0, canvas.clientWidth * 1.5, canvas.clientHeight * 1.5)
+  //   for (let i = 0; i < ballArr.length; i++) {
+  //     let ball = ballArr[i]
+  //     ball.run()
+  //   }
+  // }, 15)
 </script>
 
 </html>

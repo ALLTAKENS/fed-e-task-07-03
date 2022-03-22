@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-04-25 14:15:03
+ * @LastEditTime: 2022-03-16 09:42:33
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: \lagou\fed-e-task-07-03\前端可视化课程资料\code\01-canvas_api\08-canvas-collide-test.html
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,8 +52,20 @@
   let ySpeed = 4
 
   drawCircle(x, y, r)
+  // requestAnimationFrame(() => {
+  //   ctx.clearRect(0, 0, wd, ht)  // 清空画布
+  //   if (x - r <= 0 || x + r >= wd) {
+  //     xSpeed = -xSpeed
+  //   }
 
-  setInterval(() => {
+  //   if (y - r <= 0 || y + r >= ht) {
+  //     ySpeed = -ySpeed
+  //   }
+  //   x += xSpeed
+  //   y += ySpeed
+  //   drawCircle(x, y, r)
+  // })
+  function speed() {
     ctx.clearRect(0, 0, wd, ht)  // 清空画布
     if (x - r <= 0 || x + r >= wd) {
       xSpeed = -xSpeed
@@ -57,7 +77,22 @@
     x += xSpeed
     y += ySpeed
     drawCircle(x, y, r)
-  }, 20)
+    window.requestAnimationFrame(speed)
+  }
+  let id = requestAnimationFrame(speed);
+  // setInterval(() => {
+  //   ctx.clearRect(0, 0, wd, ht)  // 清空画布
+  //   if (x - r <= 0 || x + r >= wd) {
+  //     xSpeed = -xSpeed
+  //   }
+
+  //   if (y - r <= 0 || y + r >= ht) {
+  //     ySpeed = -ySpeed
+  //   }
+  //   x += xSpeed
+  //   y += ySpeed
+  //   drawCircle(x, y, r)
+  // }, 20)
 
 </script>
 
